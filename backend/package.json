@@ -1,11 +1,19 @@
 {
-  "name": "backendproject",
+  "name": "migration",
   "version": "1.0.0",
-  "description": "Back End Final Project Eldorado Tech",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "create-database": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "populate-tables": "npx sequelize-cli seed:generate --name add-category-default && npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Thyago Oliveira",
-  "license": "ISC"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0",
+    "sequelize-cli": "^6.4.1"
+  }
 }
