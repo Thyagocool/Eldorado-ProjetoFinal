@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "create-database": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
-    "populate-tables": "npx sequelize-cli seed:generate --name add-category-default && npx sequelize-cli db:seed:all",
+    "populate-tables": "npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

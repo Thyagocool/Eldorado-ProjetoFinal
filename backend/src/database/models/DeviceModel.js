@@ -20,7 +20,7 @@ const DeviceModel = database.define('devices', {
         type: Sequelize.STRING(16), 
     },
     partnumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false
     }
 }, { timestamps: false })

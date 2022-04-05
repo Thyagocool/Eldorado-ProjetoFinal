@@ -13,7 +13,7 @@ class CategoryRepository {
     try {
       return await CategoryModel.findAll()
     } catch (error) {
-      console.log('Erro ao selecionar várias marcas -', error.message)
+      console.log('Erro ao selecionar várias categorias -', error.message)
     }
   }
 
@@ -23,7 +23,7 @@ class CategoryRepository {
         where: filter
       })
     } catch (error) {
-      console.log('Erro ao selecionar por filtro várias marcas -', error.message)
+      console.log('Erro ao selecionar por filtro várias categorias -', error.message)
     }
   }
 
@@ -31,7 +31,7 @@ class CategoryRepository {
     try {
       return await category.save()
     } catch (error) {
-      console.log('Erro ao editar uma marca -', error.message)
+      console.log('Erro ao editar uma categoria -', error.message)
     }
   }
 
@@ -43,7 +43,7 @@ class CategoryRepository {
         }
       })
     } catch (error) {
-      console.log('Erro ao remover uma marca -', error.message)
+      console.log('Erro ao remover uma categoria -', error.message)
     }
   }
 }

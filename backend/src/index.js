@@ -23,7 +23,7 @@ const main = async () =>{
 
 
     const device = {
-        id: 2,
+        id: 1,
         name: 'Galaxy A12',
         category_id: 1,
         color: 'BLACK', 

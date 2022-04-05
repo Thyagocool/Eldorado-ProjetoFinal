@@ -24,7 +24,7 @@ module.exports = {
         allowNull: false
       },
       partnumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false
       }
     },{
