@@ -17,29 +17,29 @@ class CategoryRepository {
     }
   }
 
-  async selectByFilter(filter) {
+  async selectByFilter(id) {
     try {
-      return await CategoryModel.findAll({
-        where: filter
-      })
+      return await CategoryModel.findByPk(id)
     } catch (error) {
-      console.log('Erro ao selecionar por filtro várias categorias -', error.message)
+      console.log('Erro ao selecionar uma categoria -', error.message)
     }
   }
 
-  async update(category) {
+  async update(newcategory) {
     try {
-      return await category.save()
+      const category = await CategoryModel.findByPk(newcategory.id)
+      return await category.update(newcategory)
     } catch (error) {
       console.log('Erro ao editar uma categoria -', error.message)
     }
   }
-
   async remove(id) {
     try {
-      return await CategoryModel.destroy({
+      const category = await CategoryModel.findByPk(id)
+      
+      return await category.destroy({
         where: {
-          id
+          id:id
         }
       })
     } catch (error) {
