@@ -1,5 +1,4 @@
 const DeviceModel = require('../database/models/DeviceModel')
-const CategoryModel = require('../database/models/CategoryModel')
 
 class DeviceRepository {
   async add(device) {
@@ -18,33 +17,29 @@ class DeviceRepository {
     }
   }
 
-  async selectByFilter(filter) {
+  async selectByFilter(id) {
     try {
-      return await DeviceModel.findAll({
-        where: filter
-      })
+      return await DeviceModel.findByPk(id)
     } catch (error) {
-      console.log('Erro ao selecionar por filtro vários dispositivos -', error.message)
+      console.log('Erro ao selecionar uma dispositivo -', error.message)
     }
   }
 
-  async update(device) {
+  async update(newdevice) {
     try {
-      return await DeviceModel.update(device, {
-        where: {
-          id : device.id
-        }
-      })
+      const device = await DeviceModel.findByPk(newdevice.id)
+      return await device.update(newdevice)
     } catch (error) {
-      console.log('Erro ao editar um dispositivo -', error.message)
+      console.log('Erro ao editar uma dispositivo -', error.message)
     }
   }
-
   async remove(id) {
     try {
-      return await DeviceModel.destroy({
+      const device = await DeviceModel.findByPk(id)
+      
+      return await device.destroy({
         where: {
-          id
+          id:id
         }
       })
     } catch (error) {
