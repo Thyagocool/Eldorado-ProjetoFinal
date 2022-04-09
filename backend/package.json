@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon src/server.js",
     "create-database": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "populate-tables": "npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.3",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
     "sequelize": "^6.18.0",
     "sequelize-cli": "^6.4.1"
   }
