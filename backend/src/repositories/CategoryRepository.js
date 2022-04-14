@@ -10,6 +10,7 @@ class CategoryRepository {
   }
 
   async selectAll() {
+    console.log('Select All')
     try {
       return await CategoryModel.findAll()
     } catch (error) {
@@ -36,10 +37,9 @@ class CategoryRepository {
   async remove(id) {
     try {
       const category = await CategoryModel.findByPk(id)
-      
       return await category.destroy({
         where: {
-          id:id
+          id: id
         }
       })
     } catch (error) {

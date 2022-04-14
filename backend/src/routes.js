@@ -1,7 +1,9 @@
-const CategoriesRoutes = require('./routes/CategoryRoute')
-const DeviceRoutes = require('./routes/DeviceRoute')
+const routes = require('./routes/')
 
-exports.registerRoutes = (app) => {
-  app.use('/api/categories', CategoriesRoutes),
-  app.use('/api/devices', DeviceRoutes)
+const registerRoutes = (app) => {
+    for (const route of routes) {
+      app.use(route.name, route.router)
+    }
 }
+
+module.exports = { registerRoutes }
