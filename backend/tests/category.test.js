@@ -4,10 +4,7 @@ const app = require('../src/app')
 
 
 describe('Endpoints Categories tests', () => {
-    const category = {
-        "id": 1,
-        "name": "Smartphone"
-    }
+
     it('Should GET Categories', async ()=> {
         const res = await supertest(app).get('/api/categories')
 
@@ -48,8 +45,11 @@ describe('Endpoints Categories tests', () => {
     })
 
     it('Should Delete Category', async () => {
-
-        const res = await supertest(app).delete('/api/categories/38').send(category)
+        const category = {   
+            "id": 11,
+            "name": "SmartTablet"
+        }
+        const res = await supertest(app).delete('/api/categories/40')
 
         expect(res.statusCode).toEqual(200)
         expect(res.body).toHaveProperty('message', 'Categoria Excluida')
