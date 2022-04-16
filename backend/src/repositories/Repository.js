@@ -7,10 +7,6 @@ class Repository {
         this.repository = repository
     }
 
-    // getRepository() {
-    //     return this.repository
-    // }
-
     async add(item) {
         return await this.repository.add(item)
     }

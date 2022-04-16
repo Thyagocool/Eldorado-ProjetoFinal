@@ -41,7 +41,6 @@ class CategoryController {
     update = async (req, res) => {
         try {
             const category = await this.repository.update(req.body)
-            console.log('sera q passa aqui?')
             if(category){
                 return res.status(200).json(category)
             }

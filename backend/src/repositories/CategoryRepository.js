@@ -28,9 +28,13 @@ class CategoryRepository {
 
   async update(params) {
     try {
-      const category = await CategoryModel.findByPk(params.id)
-      return await category.update(params)
-      return
+      if(params.id){
+        const category = await CategoryModel.findByPk(params.id)
+        return await category.update(params)
+      }else{
+        return {mensagem: "Id não encontrado"}
+      }
+
     } catch (error) {
       console.log('Erro ao editar uma categoria -', error.message)
     }
