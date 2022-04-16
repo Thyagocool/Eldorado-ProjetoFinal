@@ -25,10 +25,11 @@ class DeviceRepository {
     }
   }
 
-  async update(newdevice) {
+  async update(params) {
     try {
-      const device = await DeviceModel.findByPk(newdevice.id)
-      return await device.update(newdevice)
+      
+      const device = await DeviceModel.findByPk(params.id)
+      return await device.update(params)
     } catch (error) {
       console.log('Erro ao editar uma dispositivo -', error.message)
     }

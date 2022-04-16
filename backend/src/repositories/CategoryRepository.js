@@ -10,7 +10,7 @@ class CategoryRepository {
   }
 
   async selectAll() {
-    console.log('Select All')
+
     try {
       return await CategoryModel.findAll()
     } catch (error) {
@@ -26,10 +26,11 @@ class CategoryRepository {
     }
   }
 
-  async update(newcategory) {
+  async update(params) {
     try {
-      const category = await CategoryModel.findByPk(newcategory.id)
-      return await category.update(newcategory)
+      const category = await CategoryModel.findByPk(params.id)
+      return await category.update(params)
+      return
     } catch (error) {
       console.log('Erro ao editar uma categoria -', error.message)
     }
