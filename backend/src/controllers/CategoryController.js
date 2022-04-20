@@ -31,7 +31,7 @@ class CategoryController {
         try {
             const category = await this.repository.add(req.body)
             if(category){
-                return res.status(200).json(category)
+                return res.status(201).json(category)
             }
         } catch (error) {
             return res.status(400).json({message: error.message})   

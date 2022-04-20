@@ -26,6 +26,14 @@ class Repository {
     async remove(id) {
         return await this.repository.remove(id)
     }
+
+    async login(item) {
+        return await this.repository.login(item)
+    }
+
+    async login(item) {
+        return await this.repository.findLogin(item)
+    }
 }
 
 module.exports = Repository

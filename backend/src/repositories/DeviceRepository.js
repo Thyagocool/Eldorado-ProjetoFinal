@@ -5,7 +5,7 @@ class DeviceRepository {
     try {
       return await DeviceModel.create(device)
     } catch (error) {
-      console.log('Erro ao salvar uma dispositivo -', error.message)
+      console.log('Erro ao salvar um dispositivo -', error.message)
     }
   }
 
@@ -21,7 +21,7 @@ class DeviceRepository {
     try {
       return await DeviceModel.findByPk(id)
     } catch (error) {
-      console.log('Erro ao selecionar uma dispositivo -', error.message)
+      console.log('Erro ao selecionar um dispositivo -', error.message)
     }
   }
 
@@ -31,7 +31,7 @@ class DeviceRepository {
       const device = await DeviceModel.findByPk(params.id)
       return await device.update(params)
     } catch (error) {
-      console.log('Erro ao editar uma dispositivo -', error.message)
+      console.log('Erro ao editar um dispositivo -', error.message)
     }
   }
   async remove(id) {
@@ -44,7 +44,7 @@ class DeviceRepository {
         }
       })
     } catch (error) {
-      console.log('Erro ao remover uma dispositivo -', error.message)
+      console.log('Erro ao remover um dispositivo -', error.message)
     }
   }
 }
