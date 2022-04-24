@@ -3,7 +3,7 @@ const Controllers = require('../controllers')
 
 const controller = Controllers.UserController
 
-router.get('/login', controller.login)
+router.post('/login', controller.login)
 
 router.get('/', controller.get)
 

@@ -74,7 +74,7 @@ class UserService {
         const token = authorization.split(' ')[1]
 
         try {
-console.log('authorization', authorization)
+
             jwt.verify(token, autenticacao.secreteKey)
         
             next()
