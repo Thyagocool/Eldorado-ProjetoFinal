@@ -1,0 +1,23 @@
+<div class="main">
+  <mat-card>
+    <div class="title-login">
+      <img src="../../../assets/img/login-icon.png" alt="Login" width="80px">
+      <span class='material-icons-outlined'></span>
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Usuário</mat-label>
+        <input matInput name="login" placeholder="Nome" ngModel>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput name="password" placeholder="Senha" ngModel [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button mat-raised-button>Entrar<mat-icon>login</mat-icon></button>
+    </form>
+  </mat-card>
+</div>

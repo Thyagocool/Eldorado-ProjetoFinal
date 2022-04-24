@@ -1,0 +1,23 @@
+.main{
+  background-color: #3f51b5;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  text-decoration: none;
+}
+
+.menu button{
+  color: #fff;
+}
+
+.menu:hover{
+  background-color: #5C6BC0;
+}
+
+#usuario-logado{
+  width: 200px;
+  color: #fff;
+  font-size: 14px;
+}

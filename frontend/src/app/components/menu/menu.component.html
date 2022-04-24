@@ -1,0 +1,24 @@
+<div class="main" color="primary">
+<mat-toolbar color="primary">
+
+    <a routerLink="/home" class="menu"><button mat-menu-item>Home</button></a>
+
+    <a routerLink="/category" class="menu"><button mat-menu-item>Categorias</button></a>
+
+    <a routerLink="/device" class="menu"><button mat-menu-item>Dispositivos</button></a>
+
+    <a routerLink="/user" class="menu"><button mat-menu-item>Usuários</button></a>
+
+    <a routerLink="" (click)="logout()" class="menu"><button mat-menu-item>Sair</button></a>
+
+    <mat-menu #appMenu="matMenu">
+
+    </mat-menu>
+
+
+</mat-toolbar>
+
+  <a id="usuario-logado"  >
+    Bem Vindo <em>{{login}}</em>
+  </a>
+</div>
