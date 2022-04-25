@@ -12,4 +12,6 @@ export class CategoryFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  ngSubmit(data){}
 }
