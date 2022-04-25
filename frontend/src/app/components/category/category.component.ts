@@ -16,7 +16,7 @@ import { CategoryFormComponent } from './../category-form/category-form.componen
 export class CategoryComponent implements OnInit {
 
   // categories: Observable<Category>;
-  categories: MatTableDataSource<Category>
+  dataSource: MatTableDataSource<Category>
 
   displayedColumns = ['id', 'name', 'actions']
 
@@ -29,8 +29,8 @@ export class CategoryComponent implements OnInit {
     this.categoryService.findAll()
     .subscribe({
       next:(res)=>{
-        this.categories = new MatTableDataSource(res);
-        this.categories.paginator = this.paginator;
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
       },
       error:(err)=>{
         console.error('Não pode econtrar os dados')
@@ -45,6 +45,15 @@ export class CategoryComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }
