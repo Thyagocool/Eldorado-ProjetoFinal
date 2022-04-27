@@ -1,15 +1,17 @@
-<form #categoryForm="ngForm" (ngSubmit)="ngSubmit(categoryForm.value)">
+<form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm.value)">
 
   <mat-form-field appearance="outline" lass="full-width">
     <mat-label>Id</mat-label>
-    <input matInput placeholder="Id">
+    <input matInput placeholder="Id" name="id" ngModel>
   </mat-form-field>
 
 
   <mat-form-field appearance="outline" lass="full-width">
     <mat-label>Categoria</mat-label>
-    <input matInput placeholder="Categoria">
+    <input matInput placeholder="Categoria" name="name" ngModel>
   </mat-form-field>
-
-  <button mat-raised-button color="primary">Salvar</button>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fechar</button>
+    <button mat-raised-button color="primary">Salvar</button>
+  </div>
 </form>

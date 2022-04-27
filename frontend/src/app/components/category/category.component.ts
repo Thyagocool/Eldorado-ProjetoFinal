@@ -38,12 +38,11 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-
   openDialog() {
     const dialogRef = this.dialog.open(CategoryFormComponent);
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log(`Dialog result: ${result}`)
+      this.findAll()
     });
   }
 
@@ -54,6 +53,19 @@ export class CategoryComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  findAll(){
+    this.categoryService.findAll()
+    .subscribe({
+      next:(res)=>{
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+      },
+      error:(err)=>{
+        console.error('Não pode econtrar os dados')
+      }
+    });
   }
 
 }

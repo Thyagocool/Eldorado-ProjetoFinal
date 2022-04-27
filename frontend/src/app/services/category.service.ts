@@ -1,7 +1,9 @@
-import { Category } from './../models/category';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { tap } from 'rxjs/internal/operators';
+
+import { Category } from './../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +19,14 @@ export class CategoryService {
     .pipe(
       tap(categories => console.log(categories))
     )
+  }
+
+  create(category:Category):Observable<Category>{
+    console.log('categoria', category)
+
+    return this.httpClient.post<Category>(this.API, category)
+    .pipe(
+      tap(categories => console.log(categories))
+    );
   }
 }
