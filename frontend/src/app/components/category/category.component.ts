@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Category } from 'src/app/models/category';
 
 import { CategoryService } from './../../services/category.service';
-import { CategoryFormComponent } from './../category-form/category-form.component';
-
+import { CategoryFormComponent } from './category-form/category-form.component';
 
 @Component({
   selector: 'app-category',
@@ -15,34 +16,45 @@ import { CategoryFormComponent } from './../category-form/category-form.componen
 })
 export class CategoryComponent implements OnInit {
 
-  // categories: Observable<Category>;
-  dataSource: MatTableDataSource<Category>
+  dataSource: MatTableDataSource<Category>;
 
   displayedColumns = ['id', 'name', 'actions']
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private categoryService:CategoryService, private dialog: MatDialog) { }
+  constructor(private categoryService:CategoryService, private dialog: MatDialog, private snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
-    // this.categories = this.categoryService.findAll();
-    this.categoryService.findAll()
-    .subscribe({
-      next:(res)=>{
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-      },
-      error:(err)=>{
-        console.error('Não pode econtrar os dados')
-      }
+
+    // this.categoryService.findAll()
+    // .subscribe({
+    //   next:(res)=>{
+    //     this.dataSource = new MatTableDataSource(res);
+    //     this.dataSource.paginator = this.paginator;
+    //     this.dataSource.sort = this.sort;
+    //   },
+    //   error:(err)=>{
+    //     console.error('Não pode econtrar os dados');
+    //   }
+    // });
+    this.findAll()
+  }
+
+  openFormDialog() {
+    const dialogRef = this.dialog.open(CategoryFormComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.findAll();
     });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(CategoryFormComponent);
+  openFormDialogEdit(category: Category){
+    const dialogRef = this.dialog.open(CategoryFormComponent,{
+      data: category
+  });
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-      this.findAll()
+      this.findAll();
     });
   }
 
@@ -61,11 +73,27 @@ export class CategoryComponent implements OnInit {
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error:(err)=>{
-        console.error('Não pode econtrar os dados')
+        console.error('Não pode econtrar os dados');
       }
     });
+  }
+
+  removeItem(id:number){
+    this.categoryService.delete(id).subscribe(
+      result => {
+        this.snackBar.open("Item removido", "Dispensar",
+        {
+          duration: 2 * 1000
+        });
+
+        this.findAll();
+      }
+
+    )
+
   }
 
 }

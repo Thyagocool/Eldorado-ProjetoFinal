@@ -1,0 +1,10 @@
+<form [formGroup]="categoryForm">
+  <mat-form-field appearance="outline" lass="full-width">
+    <mat-label>Categoria</mat-label>
+    <input matInput placeholder="Categoria" formControlName="name">
+  </mat-form-field>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fechar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">{{btnAction}}</button>
+  </div>
+</form>

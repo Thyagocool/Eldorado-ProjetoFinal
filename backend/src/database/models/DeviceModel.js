@@ -30,8 +30,12 @@ DeviceModel.belongsTo(CategoryModel, {
     foreignKey: 'category_id' 
 })
 
-// CategoryModel.belongsTo(DeviceModel,{
-//     foreignKey: 'id' 
-// })
+DeviceModel.associate = function(models){
+    DeviceModel.belongsTo(models.CategoryModel,{
+        foreingkey: 'category_id',
+        as: 'category'
+    })
+}
+
 
 module.exports = DeviceModel

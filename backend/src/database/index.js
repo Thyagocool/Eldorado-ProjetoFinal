@@ -5,5 +5,4 @@ const sequelize = new Sequelize(
     optionsDatabase
 )
 
-
 module.exports = sequelize

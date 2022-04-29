@@ -1,10 +1,11 @@
 <app-menu></app-menu>
 
-<hr>
 <mat-toolbar-row>
-  <button mat-mini-fab (click)="openDialog()" color="primary" title="Incluir Novo" >
+
+  <button mat-mini-fab (click)="openFormDialog()" color="primary" title="Incluir Novo" >
     <mat-icon >add</mat-icon>
   </button>
+
   <mat-form-field appearance="standard">
     <mat-label>Buscar Categorias</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Notebook" #input>
@@ -13,24 +14,26 @@
 
 <mat-card >
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table" matSort>
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
         <td mat-cell *matCellDef="let category"> {{category.id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let category"> {{category.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let category">
-          <button mat-mini-fab color="warn" title="Remover item">
+
+          <button mat-mini-fab color="warn" title="Remover item" (click)="removeItem(category.id)" >
             <mat-icon>delete</mat-icon>
           </button>
-          <button mat-mini-fab color="complementary" title="Remover item">
+
+          <button mat-mini-fab color="complementary" title="Alterar item" (click)="openFormDialogEdit(category)">
             <mat-icon>edit</mat-icon>
           </button>
 

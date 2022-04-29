@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,17 +11,17 @@ import { Auth } from '../models/auth';
 })
 export class LoginService {
 
-  private readonly API:string = 'http://localhost:3000/api/users/login';
+  private readonly API:string = environment.API;
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   login(data){
-    return this.httpClient.post<Auth>(this.API, data)
+    return this.httpClient.post<Auth>(`${this.API}users/login`, data)
     .pipe(
       tap(user => {
         if(user.token){
-          localStorage.setItem("token", user.token)
-          localStorage.setItem("user", user.usuario.login)
-          this.router.navigate(['/home'])
+          localStorage.setItem("token", user.token);
+          localStorage.setItem("user", user.usuario.login);
+          this.router.navigate(['/home']);
         }
       })
     )

@@ -1,3 +1,4 @@
+const CategoryModel = require('../database/models/CategoryModel')
 const DeviceModel = require('../database/models/DeviceModel')
 
 class DeviceRepository {
@@ -11,7 +12,7 @@ class DeviceRepository {
 
   async selectAll() {
     try {
-      return await DeviceModel.findAll()
+      return await DeviceModel.findAll({ include: CategoryModel })
     } catch (error) {
       console.log('Erro ao selecionar vários dispositivos -', error.message)
     }

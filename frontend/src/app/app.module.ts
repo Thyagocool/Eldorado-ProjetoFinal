@@ -16,7 +16,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { CategoryComponent } from './components/category/category.component';
 import { DeviceComponent } from './components/device/device.component';
 import { UserComponent } from './components/user/user.component';
-import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { CategoryFormComponent } from './components/category/category-form/category-form.component';
+import { DeviceFormComponent } from './components/device/device-form/device-form.component';
+
+
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     CategoryComponent,
     DeviceComponent,
     UserComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    DeviceFormComponent
+
+
   ],
   imports: [
     BrowserModule,

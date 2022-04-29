@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
@@ -10,7 +11,7 @@ import { Category } from './../models/category';
 })
 export class CategoryService {
 
-  API:string = 'http://localhost:3000/api/categories/'
+  API:string = `${environment.API}categories`;
 
   constructor(private httpClient:HttpClient) { }
 
@@ -22,11 +23,15 @@ export class CategoryService {
   }
 
   create(category:Category):Observable<Category>{
-    console.log('categoria', category)
-
     return this.httpClient.post<Category>(this.API, category)
     .pipe(
       tap(categories => console.log(categories))
     );
+  }
+
+  delete(id: number){
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(
+      tap(categories => console.log(categories))
+    )
   }
 }
