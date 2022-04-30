@@ -14,7 +14,8 @@ class UserController {
             await userService.login(req.body, res)
            
         } catch (error) {
-            return res.status(400).json({message: + error.message})                     
+            
+            return res.status(400).json({message: error.message})                     
         }
     }
 

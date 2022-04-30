@@ -1,10 +1,33 @@
 <form [formGroup]="deviceForm">
+
   <mat-form-field appearance="outline" lass="full-width">
     <mat-label>Dispositivo</mat-label>
-    <input matInput placeholder="Categoria" formControlName="name">
+    <input matInput placeholder="Dispositivo" formControlName="name">
   </mat-form-field>
+
+  <mat-form-field appearance="outline" lass="full-width">
+    <mat-label>Cor</mat-label>
+    <input matInput placeholder="Cor" formControlName="color">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" lass="full-width">
+    <mat-label>Partnumber</mat-label>
+    <input matInput type="number" placeholder="Partnumber" formControlName="partnumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" lass="full-width">
+    <mat-label>Categoria</mat-label>
+    <mat-select formControlName="category_id" name="category_id">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Fechar</button>
     <button mat-raised-button color="primary" (click)="onSubmit()">{{btnAction}}</button>
   </div>
+
 </form>

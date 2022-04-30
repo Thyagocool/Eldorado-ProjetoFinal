@@ -15,23 +15,19 @@ export class DeviceService {
   constructor(private httpClient: HttpClient) { }
 
   findAll(){
-    return this.httpClient.get<any>(this.API)
-    .pipe(
-      tap(devices => console.log(devices))
-    )
+    return this.httpClient.get<any>(this.API);
   }
 
   create(device:Device):Observable<Device>{
-    return this.httpClient.post<Device>(this.API, device)
-    .pipe(
-      tap(devices => console.log(devices))
-    );
+    return this.httpClient.post<Device>(this.API, device);
+  }
+
+  update(id:string, device:Device):Observable<Device>{
+    return this.httpClient.put<Device>(`${this.API}/${id}`, device);
   }
 
   delete(id: number){
-    return this.httpClient.delete(`${this.API}/${id}`).pipe(
-      tap(devices => console.log(devices))
-    )
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 
 }

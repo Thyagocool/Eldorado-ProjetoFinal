@@ -16,22 +16,18 @@ export class CategoryService {
   constructor(private httpClient:HttpClient) { }
 
   findAll(){
-    return this.httpClient.get<any>(this.API)
-    .pipe(
-      tap(categories => console.log(categories))
-    )
+    return this.httpClient.get<any>(this.API);
   }
 
   create(category:Category):Observable<Category>{
-    return this.httpClient.post<Category>(this.API, category)
-    .pipe(
-      tap(categories => console.log(categories))
-    );
+    return this.httpClient.post<Category>(this.API, category);
+  }
+
+  update(id:string, category:Category):Observable<Category>{
+    return this.httpClient.put<Category>(`${this.API}/${id}`, category);
   }
 
   delete(id: number){
-    return this.httpClient.delete(`${this.API}/${id}`).pipe(
-      tap(categories => console.log(categories))
-    )
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 }

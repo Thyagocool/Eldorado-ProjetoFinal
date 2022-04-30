@@ -1,0 +1,7 @@
+
+  <h1 mat-dialog-title>Deseja realmente excluir este registro? {{data.id}}</h1>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="" cdkFocusInitial>Cancelar</button>
+    <button mat-raised-button color="warn" (click)="removeItem()">Excluir</button>
+  </div>
+

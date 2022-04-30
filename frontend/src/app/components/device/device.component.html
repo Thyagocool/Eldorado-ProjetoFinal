@@ -26,18 +26,13 @@
       </ng-container>
 
       <ng-container matColumnDef="color">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> cor </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cor </th>
         <td mat-cell *matCellDef="let device"> {{device.color}} </td>
       </ng-container>
 
       <ng-container matColumnDef="partnumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Partnumber </th>
         <td mat-cell *matCellDef="let device"> {{device.partnumber}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="category_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let device"> {{device.category_id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="category_name">
@@ -49,7 +44,7 @@
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let device">
 
-          <button mat-mini-fab color="warn" title="Remover item" (click)="removeItem(device.id)" >
+          <button mat-mini-fab color="warn" title="Remover item" (click)="openFormDialogDelete(device.id)" >
             <mat-icon>delete</mat-icon>
           </button>
 

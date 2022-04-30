@@ -26,10 +26,10 @@ class CategoryRepository {
     }
   }
 
-  async update(params) {
+  async update(id, params) {
     try {
-      if(params.id){
-        const category = await CategoryModel.findByPk(params.id)
+      if(id){
+        const category = await CategoryModel.findByPk(id)
         return await category.update(params)
       }else{
         return {mensagem: "Id não encontrado"}

@@ -8,6 +8,7 @@ import { Category } from 'src/app/models/category';
 
 import { CategoryService } from './../../services/category.service';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 
 @Component({
   selector: 'app-category',
@@ -26,18 +27,6 @@ export class CategoryComponent implements OnInit {
   constructor(private categoryService:CategoryService, private dialog: MatDialog, private snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
-
-    // this.categoryService.findAll()
-    // .subscribe({
-    //   next:(res)=>{
-    //     this.dataSource = new MatTableDataSource(res);
-    //     this.dataSource.paginator = this.paginator;
-    //     this.dataSource.sort = this.sort;
-    //   },
-    //   error:(err)=>{
-    //     console.error('Não pode econtrar os dados');
-    //   }
-    // });
     this.findAll()
   }
 
@@ -51,8 +40,16 @@ export class CategoryComponent implements OnInit {
   openFormDialogEdit(category: Category){
     const dialogRef = this.dialog.open(CategoryFormComponent,{
       data: category
-  });
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.findAll();
+    });
+  }
 
+  openFormDialogDelete(id: number){
+    const dialogRef = this.dialog.open(CategoryDialogComponent,{
+      data: {id: id}
+    });
     dialogRef.afterClosed().subscribe(result => {
       this.findAll();
     });
@@ -61,7 +58,6 @@ export class CategoryComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -79,21 +75,6 @@ export class CategoryComponent implements OnInit {
         console.error('Não pode econtrar os dados');
       }
     });
-  }
-
-  removeItem(id:number){
-    this.categoryService.delete(id).subscribe(
-      result => {
-        this.snackBar.open("Item removido", "Dispensar",
-        {
-          duration: 2 * 1000
-        });
-
-        this.findAll();
-      }
-
-    )
-
   }
 
 }

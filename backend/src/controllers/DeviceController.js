@@ -39,8 +39,9 @@ class DeviceController {
     }
 
     update = async (req, res) => {
+        const {id} = req.params
         try {
-            const device = await this.repository.update(req.body)
+            const device = await this.repository.update(id, req.body)
             if(device){
                 return res.status(200).json(device)
             }

@@ -13,7 +13,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.login = localStorage.getItem('user')
-    console.log( this.login)
   }
 
   logout(){

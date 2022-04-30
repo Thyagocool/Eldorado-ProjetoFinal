@@ -19,8 +19,8 @@ class Repository {
         return await this.repository.selectByFilter(filter)
     }
 
-    async update(item) {
-        return await this.repository.update(item)
+    async update(id, item) {
+        return await this.repository.update(id, item)
     }
 
     async remove(id) {

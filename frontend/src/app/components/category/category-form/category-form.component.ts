@@ -44,25 +44,41 @@ export class CategoryFormComponent implements OnInit {
         this.categoryService.create(this.categoryForm.value)
         .subscribe({
           next:(res)=>{
-            this.snackBar.open("Salvo com sucesso", "Dispensar",
+            this.snackBar.open("Salvo com sucesso", "X",
                 {
                   duration: 2 * 1000
                 })
                 this.matDialog.closeAll();
           },
           error:(err)=>{
-            this.snackBar.open("Falha ao salvar a categoria"+ err, "Dispensar",
+            this.snackBar.open("Falha ao salvar a categoria"+ err, "X",
             {
               duration: 2 * 1000
             })
           }
         })
       }else{
-        //this.categoryForm.update()
+        this.categoryService.update(this.editData.id, this.categoryForm.value)
+        .subscribe({
+          next:(res)=>{
+            this.snackBar.open("Alterações Salvas", "X",
+                {
+                  duration: 2 * 1000
+                })
+                console.log('Salvo Alt')
+                this.matDialog.closeAll();
+          },
+          error:(err)=>{
+            this.snackBar.open("Falha ao salvar o dispositivo"+ err, "X",
+            {
+              duration: 2 * 1000
+            })
+          }
+        })
       }
 
     }else{
-      this.snackBar.open("Preencha todos os campos obrigatorios", "Dispensar",
+      this.snackBar.open("Preencha todos os campos obrigatorios", "X",
           {
             duration: 2 * 1000
           })

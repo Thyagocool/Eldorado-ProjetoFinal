@@ -19,6 +19,9 @@ import { UserComponent } from './components/user/user.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
 import { DeviceFormComponent } from './components/device/device-form/device-form.component';
 
+import { DeviceDialogComponent } from './components/device/device-dialog/device-dialog.component';
+import { CategoryDialogComponent } from './components/category/category-dialog/category-dialog.component';
+
 
 
 
@@ -32,7 +35,9 @@ import { DeviceFormComponent } from './components/device/device-form/device-form
     DeviceComponent,
     UserComponent,
     CategoryFormComponent,
-    DeviceFormComponent
+    DeviceFormComponent,
+    DeviceDialogComponent,
+    CategoryDialogComponent
 
 
   ],

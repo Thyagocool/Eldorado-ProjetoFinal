@@ -1,3 +1,4 @@
+import { DeviceDialogComponent } from './device-dialog/device-dialog.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -9,6 +10,7 @@ import { Device } from 'src/app/models/device';
 import { DeviceService } from './../../services/device.service';
 import { DeviceFormComponent } from './device-form/device-form.component';
 
+
 @Component({
   selector: 'app-device',
   templateUrl: './device.component.html',
@@ -18,7 +20,7 @@ export class DeviceComponent implements OnInit {
 
   dataSource: MatTableDataSource<Device>;
 
-  displayedColumns = ['id', 'name', 'color', 'partnumber', 'category_id', 'category_name', 'actions']
+  displayedColumns = ['id', 'name', 'color', 'partnumber', 'category_name', 'actions']
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,7 +45,6 @@ export class DeviceComponent implements OnInit {
     });
   }
 
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -51,7 +52,6 @@ export class DeviceComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-
   }
 
   openFormDialog() {
@@ -65,11 +65,18 @@ export class DeviceComponent implements OnInit {
     const dialogRef = this.dialog.open(DeviceFormComponent,{
       data: device
     });
+    dialogRef.afterClosed().subscribe(result => {
+      this.findAll();
+    });
   }
 
-  removeItem(id){
-
+  openFormDialogDelete(id: number){
+    const dialogRef = this.dialog.open(DeviceDialogComponent,{
+      data: {id: id}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.findAll();
+    });
   }
-
 
 }

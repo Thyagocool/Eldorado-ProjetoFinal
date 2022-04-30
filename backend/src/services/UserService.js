@@ -48,8 +48,13 @@ class UserService {
     async login(user, res){
         const {login, password} = user
         const existsUser = await userRepository.findLogin(login)
-        const validPassword = bcrypt.compareSync(password, existsUser.password)
+        let validPassword = '';
 
+        if(existsUser){
+            validPassword = bcrypt.compareSync(password, existsUser.password)
+        }else{
+            return res.status(400).json({ mensagem: 'Usuário não encontrado' })
+        }
         
         if((existsUser) && (validPassword)){
             const {id} = existsUser

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Auth } from '../../models/auth';
@@ -17,17 +18,20 @@ export class LoginComponent implements OnInit {
   login:string = '';
   password:string = '';
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
-    console.log(this.login)
-
-  }
+  ngOnInit(): void {}
 
   onSubmit(data){
     this.loginService.login(data).subscribe(
       success => console.log('sucesso'),
-      error => console.error(error),
+      error => {
+        this.snackBar.open(error.error.mensagem, "X",
+        {
+          duration: 2 * 1000
+        });
+      },
+
       () =>console.log('request finalizado')
     )
 
