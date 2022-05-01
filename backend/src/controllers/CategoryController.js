@@ -1,5 +1,3 @@
-
-
 class CategoryController {
     
     constructor(repository) {
