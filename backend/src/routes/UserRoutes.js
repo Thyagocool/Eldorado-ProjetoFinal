@@ -11,7 +11,7 @@ router.get('/:id', controller.getOne)
 
 router.post('/', controller.post)
 
-router.put('/', controller.update)
+router.put('/:id', controller.update)
 
 router.delete('/:id', controller.delete)
 

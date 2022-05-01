@@ -29,19 +29,14 @@ class UserService {
         return createUser
 
     }
-    
 
-    async update(user){
+    async update(id, user){
         const existsUser = await userRepository.findLogin(user.login)
-
-        const validPassword = bcrypt.compareSync(user.password, existsUser.password)
-
-        if(!validPassword){
+        if(existsUser.password != user.password){
             user.password = await this.passwordEnconder(user.password)
         }
-
-        const updateUser = await userRepository.update(user)
-
+        
+        const updateUser = await userRepository.update(id, user)
         return updateUser
     }
 

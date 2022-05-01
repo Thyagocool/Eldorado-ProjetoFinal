@@ -1,0 +1,14 @@
+<form [formGroup]="userForm">
+  <mat-form-field appearance="outline" lass="full-width">
+    <mat-label>Usuário</mat-label>
+    <input matInput placeholder="Usuário" formControlName="login">
+  </mat-form-field>
+  <mat-form-field appearance="outline" lass="full-width">
+    <mat-label>Usuário</mat-label>
+    <input matInput type="password" placeholder="Senha" formControlName="password">
+  </mat-form-field>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fechar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">{{btnAction}}</button>
+  </div>
+</form>

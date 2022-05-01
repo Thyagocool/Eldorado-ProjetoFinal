@@ -41,7 +41,9 @@ class UserController {
     post = async (req, res) => {
         try {
             const user = await userService.create(req.body)
-
+            if(user){
+                return res.status(201).json(user)
+            }
         } catch (error) {
             return res.status(400).json({message: error.message})   
         }
@@ -49,8 +51,8 @@ class UserController {
 
     update = async (req, res) => {
         try {
-            //const user = await this.repository.update(req.body)
-            const user = await userService.update(req.body)
+            const {id} = req.params
+            const user = await userService.update(id, req.body)
             if(user){
                 return res.status(200).json(user)
             }

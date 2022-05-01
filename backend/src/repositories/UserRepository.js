@@ -42,10 +42,9 @@ class UserRepository {
     }
   }
 
-  async update(params) {
+  async update(id, params) {
     try {
-      
-      const user = await UserModel.findByPk(params.id)
+      const user = await UserModel.findByPk(id)
       return await user.update(params)
     } catch (error) {
       console.log('Erro ao editar um usuário -', error.message)

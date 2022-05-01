@@ -21,6 +21,8 @@ import { DeviceFormComponent } from './components/device/device-form/device-form
 
 import { DeviceDialogComponent } from './components/device/device-dialog/device-dialog.component';
 import { CategoryDialogComponent } from './components/category/category-dialog/category-dialog.component';
+import { UserDialogComponent } from './components/user/user-dialog/user-dialog.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 
 
 
@@ -37,7 +39,9 @@ import { CategoryDialogComponent } from './components/category/category-dialog/c
     CategoryFormComponent,
     DeviceFormComponent,
     DeviceDialogComponent,
-    CategoryDialogComponent
+    CategoryDialogComponent,
+    UserDialogComponent,
+    UserFormComponent
 
 
   ],
