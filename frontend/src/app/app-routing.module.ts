@@ -9,8 +9,7 @@ import { DeviceComponent } from './components/device/device.component';
 
 const routes: Routes = [
 
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'login',component: LoginComponent},
+  { path: '',component: LoginComponent},
   { path: 'home',component: HomeComponent},
   { path: 'category',component: CategoryComponent},
   { path: 'device',component: DeviceComponent},
